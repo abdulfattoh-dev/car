@@ -7,7 +7,7 @@ import { CarEntity } from './car/entities/car.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: 'postgres://postgres:2508@localhost:5432/car',
+      url: 'postgresql://postgres:ebQuajuIFzjEytMJiCQCWAGQAdzOFbVR@postgres.railway.internal:5432/railway',
       entities: [CarEntity],
       synchronize: true,
       autoLoadEntities: true,
