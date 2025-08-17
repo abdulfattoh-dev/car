@@ -27,9 +27,6 @@ export class UserEntity {
     @Column({ type: 'varchar', name: 'password' })
     password: string;
 
-    @Column({ type: 'varchar', name: 'confirm_password' })
-    confirmPassword: string;
-
     @Column({ type: 'enum', name: 'gender', enum: Gender })
     gender: Gender;
 
