@@ -18,4 +18,4 @@ import { UserEntity } from './user/entities/user.entity';
     UserModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
