@@ -18,11 +18,7 @@ export class UserService {
   }
 
   findAll() {
-    return this.repository.find({
-      order: {
-        createdAt: 'ASC',
-      },
-    });
+    return this.repository.find({ order: { createdAt: 'ASC' } });
   }
 
   async findOne(id: string) {

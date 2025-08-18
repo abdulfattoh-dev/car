@@ -29,9 +29,9 @@ export class CarEntity {
   @Column({ type: 'int', name: 'power' })
   power: number;
 
-  @CreateDateColumn({ type: 'date', name: 'created_at' })
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'date', name: 'updated_at' })
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 }
