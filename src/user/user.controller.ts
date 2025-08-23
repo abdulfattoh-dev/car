@@ -10,14 +10,27 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { VerifyOtpDto } from './dto/verify-otp.dto';
+import { LoginUserDto } from './dto/login-user.dto';
+import { Response } from 'express';
 
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService) { }
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  @Post('register')
+  register(@Body() createUserDto: CreateUserDto) {
+    return this.userService.register(createUserDto);
+  }
+
+  @Post('verify-otp')
+  verifyOtp(@Body() verifyOtpDto: VerifyOtpDto) {
+    return this.userService.verifyOtp(verifyOtpDto);
+  }
+
+  @Post('login')
+  login(@Body() loginUserDto: LoginUserDto, res: Response) {
+    return this.userService.login(loginUserDto, res);
   }
 
   @Get()
