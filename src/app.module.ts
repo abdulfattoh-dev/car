@@ -4,6 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CarEntity } from './car/entities/car.entity';
 import { UserModule } from './user/user.module';
 import { UserEntity } from './user/entities/user.entity';
+import { CacheModule } from '@nestjs/cache-manager';
+import { JwtModule } from '@nestjs/jwt';
+import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
@@ -14,8 +17,22 @@ import { UserEntity } from './user/entities/user.entity';
       synchronize: true,
       autoLoadEntities: true,
     }),
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 120
+    }),
+    MailerModule.forRoot({
+      transport: {
+        service: 'gmail',
+        auth: {
+          user: 'abdulfattoh.dev@gmail.com',
+          pass: 'jrmkojehulnnifky',
+        },
+      },
+    }),
+    JwtModule.register({ global: true }),
     CarModule,
     UserModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }

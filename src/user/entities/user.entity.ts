@@ -5,7 +5,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Gender } from '../enum/enum';
 
 @Entity('users')
 export class UserEntity {
@@ -13,22 +12,16 @@ export class UserEntity {
   id: string;
 
   @Column({ type: 'varchar', name: 'full_name' })
-  fullName: string;
-
-  @Column({ type: 'varchar', name: 'username' })
-  username: string;
+  full_name: string;
 
   @Column({ type: 'varchar', name: 'email' })
   email: string;
 
-  @Column({ type: 'varchar', name: 'phone_number' })
-  phoneNumber: string;
-
   @Column({ type: 'varchar', name: 'password' })
   password: string;
 
-  @Column({ type: 'enum', name: 'gender', enum: Gender })
-  gender: Gender;
+  @Column({ type: 'boolean', name: 'is_active', default: false })
+  is_active: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
