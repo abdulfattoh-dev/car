@@ -19,7 +19,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
     }),
     CacheModule.register({
       isGlobal: true,
-      ttl: 120
+      ttl: 120,
     }),
     MailerModule.forRoot({
       transport: {
@@ -35,4 +35,4 @@ import { MailerModule } from '@nestjs-modules/mailer';
     UserModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
