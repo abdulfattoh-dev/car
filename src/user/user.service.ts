@@ -41,18 +41,18 @@ export class UserService {
     const user = this.repository.create(createUserDto);
     await this.repository.save(user);
 
-    const otp = otpGenerator.generate(6, {
-      upperCaseAlphabets: false,
-      specialChars: false,
-      lowerCaseAlphabets: false,
-    });
+    // const otp = otpGenerator.generate(6, {
+    //   upperCaseAlphabets: false,
+    //   specialChars: false,
+    //   lowerCaseAlphabets: false,
+    // });
 
-    await this.cacheManager.set(email, otp);
+    // await this.cacheManager.set(email, otp);
 
-    await this.mailerService.sendMail({
-      to: email,
-      text: `${otp}`,
-    });
+    // await this.mailerService.sendMail({
+    //   to: email,
+    //   text: `${otp}`,
+    // });
 
     return {
       message: 'A verification code has been sent to your email.',
