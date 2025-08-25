@@ -15,21 +15,30 @@ async function bootstrap() {
     credentials: true,
   });
 
-  app.use((req: { method: string; }, res: { header: (arg0: string, arg1: string) => void; sendStatus: (arg0: number) => any; }, next: () => void) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-    res.header(
-      'Access-Control-Allow-Methods',
-      'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    );
-    res.header(
-      'Access-Control-Allow-Headers',
-      'Content-Type, Accept, Authorization',
-    );
-    if (req.method === 'OPTIONS') {
-      return res.sendStatus(200);
-    }
-    next();
-  });
+  app.use(
+    (
+      req: { method: string },
+      res: {
+        header: (arg0: string, arg1: string) => void;
+        sendStatus: (arg0: number) => any;
+      },
+      next: () => void,
+    ) => {
+      res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+      res.header(
+        'Access-Control-Allow-Methods',
+        'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+      );
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Content-Type, Accept, Authorization',
+      );
+      if (req.method === 'OPTIONS') {
+        return res.sendStatus(200);
+      }
+      next();
+    },
+  );
 
   app.useGlobalPipes(
     new ValidationPipe({
